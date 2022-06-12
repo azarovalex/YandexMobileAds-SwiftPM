@@ -5,32 +5,25 @@ import PackageDescription
 
 let package = Package(
     name: "YandexMobileAds",
+    platforms: [.iOS(.v9)],
     products: [
         .library(
             name: "YandexMobileAds",
             targets: ["YandexMobileAdsWrapper"]),
     ],
+    dependencies: [
+        .package(name: "YandexMobileMetrica", url: "https://github.com/yandexmobile/metrica-sdk-ios.git", .upToNextMajor(from: "4.0.0"))
+    ],
     targets: [
         .target(
             name: "YandexMobileAdsWrapper",
             dependencies: [
-                .target(name: "YandexMobileAds", condition: .when(platforms: .some([.iOS]))),
+                "YandexMobileAds",
+                "YandexMobileMetrica"
             ],
             path: "YandexMobileAdsWrapper",
             linkerSettings: [
-                .linkedLibrary("sqlite3"),
-                .linkedLibrary("c++"),
-                .linkedLibrary("z"),
                 .linkedLibrary("xml2"),
-                .linkedFramework("StoreKit"),
-                .linkedFramework("Security"),
-                .linkedFramework("SafariServices"),
-                .linkedFramework("SystemConfiguration"),
-                .linkedFramework("UIKit"),
-                .linkedFramework("Foundation"),
-                .linkedFramework("CoreTelephony"),
-                .linkedFramework("CoreLocation"),
-                .linkedFramework("CoreGraphics"),
                 .linkedFramework("AdSupport"),
                 .linkedFramework("WebKit")
             ]
