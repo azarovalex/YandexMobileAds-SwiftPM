@@ -28,6 +28,6 @@ let package = Package(
                 .linkedFramework("WebKit")
             ]
         ),
-        .binaryTarget(name: "YandexMobileAds", path: "./YandexMobileAds.xcframework")
+        .binaryTarget(name: "YandexMobileAds", url: "https://github.com/azarovalex/YandexMobileAds-SwiftPM/releases/download/5.0.2/YandexMobileAds.xcframework.zip", checksum: "782be1bf31ee7cbcbe1f432241b47aea4b4ee4b8174df3328e02c6e7358ca179")
     ]
 )
